@@ -30,3 +30,38 @@ public:
         return {-1, -1};
     }
 };
+//Approach 3  Two Pointer Approach
+class Solution {
+//Please upvote if you like the appraoch 
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+  int high=nums.size()-1;
+  int low=0;
+  vector<int>v;
+  vector<int>temp;
+  for(int i=0;i<nums.size();i++){
+      temp.push_back(nums[i]);
+  }
+  sort(nums.begin(),nums.end());
+  while(low<=high){
+      if(nums[low]+nums[high]==target){
+        break;
+      }
+      else if(nums[low]+nums[high]>target){
+          high--;
+      }
+      else if(nums[low]+nums[high]<target){
+          low++;
+      }
+  }
+  for(int i=0;i<nums.size();i++){
+      if(temp[i]==nums[low]){
+          v.push_back(i);
+      }
+      else if(temp[i]==nums[high]){
+          v.push_back(i);
+      }
+  }
+  return v;
+    }
+};
